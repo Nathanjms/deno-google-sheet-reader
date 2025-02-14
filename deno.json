@@ -1,6 +1,7 @@
 {
   "tasks": {
-    "start": "deno run --allow-net --allow-env --allow-read --env --watch=server.ts server.ts"
+    "dev": "deno run --env-file=.env --allow-net --allow-env --allow-read --watch=server.ts server.ts",
+    "start": "deno run --env-file=.env --allow-net --allow-env --allow-read server.ts"
   },
   "imports": {
     "oak": "https://deno.land/x/oak@v17.1.4/mod.ts",
