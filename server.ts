@@ -1,5 +1,5 @@
-import { Application, Router } from "https://deno.land/x/oak@v17.1.4/mod.ts";
-import { google } from "npm:googleapis";
+import { Application, Router } from "oak";
+import { google } from "googleapis";
 
 // Load environment variables (for storing Google service account credentials)
 // const SERVICE_ACCOUNT_KEY = JSON.parse(Deno.env.get("GOOGLE_SERVICE_ACCOUNT") || "{}");
@@ -10,6 +10,11 @@ const cache = { data: null, timestamp: 0 } as { data: any; timestamp: number };
 const CACHE_TTL = 60 * 60 * 1000; // Cache duration: 60 minutes
 
 const router = new Router();
+
+// Endpoint to manually refresh cache
+router.get("/", (ctx) => {
+  ctx.response.body = { message: "Hello World!" };
+});
 
 // Endpoint to manually refresh cache
 router.get("/refresh", async (ctx) => {
@@ -55,7 +60,6 @@ await app.listen({ port: 8000 });
 
 // Function to fetch data from Google Sheets
 async function fetchSheetData() {
-  console.log(Deno.env.toObject());
   if (!SHEET_ID) throw new Error("Missing SHEET_ID");
 
   // Auth

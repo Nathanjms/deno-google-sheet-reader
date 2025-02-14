@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "start": "deno run --allow-net --allow-env --allow-read --env-file --watch=server.ts server.ts"
+  },
+  "imports": {
+    "oak": "https://deno.land/x/oak@v17.1.4/mod.ts",
+    "googleapis": "npm:googleapis@144.0.0"
+  }
+}
