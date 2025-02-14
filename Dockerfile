@@ -6,6 +6,6 @@ WORKDIR /app
 
 ADD . /app
 
-RUN deno install --entrypoint main.ts
+RUN deno install --entrypoint server.ts
 
-CMD ["run", "task", "start"]
+CMD ["task", "start"]
